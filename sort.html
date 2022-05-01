@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    function merge(left,right){
+        let arr = []
+        let l = 0
+        let r = 0
+        while(l <=left.length && r < right.length){
+            if(left[l] < right[r]){
+                arr.push(left[l])
+                l++
+            }else{
+                arr.push(right[r])
+                r++
+            }
+        }
+        if(l < left.length){
+            arr.concat(...left.slice(l))
+        }else{
+            arr.concat(...right.slice(r))
+        }
+        return arr
+    }
+
+    function merge_sort(arr){
+        if(arr.length <2)
+            return arr
+
+        let mid = Math.floor(arr.length/2)
+        let left = merge_sort(arr.slice(0,mid))
+        let right = merge_sort(arr.slice(mid))
+        return merge(left,right)
+    }
+
+    function bubble_sort(arr) {
+        for(let i = 0; i < arr.length - 1; i++){
+            for(let j = 0; j < arr.length - i - 1; j++){
+                if(arr[j] > arr[j+1]){
+                    [arr[j],arr[j+1]] = [arr[j+1],arr[j]]
+                }
+            }
+        }
+        return arr
+    }
+
+    function select_sort(arr){
+
+    }
+
+    //非原地
+    // function quick_sort(arr){
+    //     if(arr.length <2)
+    //         return arr
+    //     let left = []
+    //     let right = []
+    //     let cur = arr.splice(0,1)
+    //     arr.forEach((item) =>{
+    //         if(item >= cur){
+    //             right.push(item)
+    //         }else{
+    //             left.push(item)
+    //         }
+    //     })
+    //     return quick_sort(left).concat(cur,quick_sort(right))
+    //     return [...quick_sort(left),...cur,...quick_sort(right)]
+    // }
+
+    //原地
+    function quick_sort(arr,start,end){
+        if(start >= end)
+            return;
+        let left = start
+        let right = end
+        let cur = arr[start]
+
+        while(left < right){
+            while(arr[right] > cur && left<right){
+                right --
+            }
+            while(arr[left] <=cur && left<right){
+                left ++
+            }
+            [arr[left],arr[right]] = [arr[right],arr[left]]
+        }
+        [arr[start],arr[left]] = [arr[left],cur]
+
+        quick_sort(arr,start,left-1)
+        quick_sort(arr,left+1,end)
+    }
+
+    let test = [1, 34, 5, 76, 8, 6, 9, 7, 6, 3]
+    quick_sort(test,0,test.length-1)
+    console.log(test);
+    console.log(merge_sort(test, 0, test.length));
+    console.log(bubble_sort(test));
+</script>
+</html>

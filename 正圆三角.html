@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .cir{
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            border-radius: 50%;
+        }
+        .tri{
+            width: 0;
+            height: 0;
+            border-bottom: 100px solid transparent;
+            border-right: 100px  solid transparent;
+            border-left: 100px solid gray;
+            border-top:100px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="tri"></div>
+        <div class="cir"></div>
+        <div class="zf"></div>
+    </div>
+</body>
+<script>
+    [1,2,3].forEach((item,index)=>{
+        console.log(item, index);
+    })
+
+    var nextPermutation = function(nums) {
+        let l = 0
+        let r = nums.length - 1
+        for(let i = nums.length - 2 ; i >= 0; i++){
+            l = i
+            if(nums[i] < nums[i + 1]){
+                break
+            }
+        }
+
+        for(let i = nums.length - 1 ; i >= 0; i++){
+            if(nums[i] > nums[l]){
+                r = i
+                break
+            }
+        }
+
+        [nums[l] , nums[r]] = [nums[r] , nums[l]]
+        if(l !== 0 ){
+
+        }
+        l ++
+        while(l < r ){
+            [nums[l] , nums[r]] = [nums[r] , nums[l]]
+            l++
+            r--
+        }
+    };
+
+    let pp = [3,2,1]
+    nextPermutation(pp)
+</script>
+</html>

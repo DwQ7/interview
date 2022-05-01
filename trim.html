@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function myTrim(str) {
+        // return str.replace(/\s*/g,'')
+        return str.replace(/(^\s*)|(\s*$)/,'')
+    }
+
+    let srt1 = '        Hello World!        '
+    let str = myTrim("        Hello World!        ");
+    console.log(str);
+    alert(srt1)
+
+    var lengthOfLastWord = function(s) {
+        str = s.replace(/\s*$/,'')
+        return str.lastIndexOf(' ')
+    };
+    console.log(lengthOfLastWord("   fly me   to   the moon  "));
+    console.log(str.indexOf('Wo'));
+    var plusOne = function(digits) {
+        digits.reverse().forEach((item,index,arr)=>{
+            if(item === 9){
+                arr[index] = 0
+                arr[index+1] +=1
+                for(let i = 0 ;i <= index ;i ++){
+                    arr[i] = 0
+                }
+            }else{
+                arr[index] +=1
+                throw new Error('End Loop')
+            }
+        })
+        console.log(digits);
+        return digits.reverse()
+    };
+
+    plusOne([1,2,4,5])
+</script>
+</html>

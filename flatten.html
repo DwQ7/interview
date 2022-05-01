@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //递归
+    function flatten(arr){
+        let result = []
+        arr.forEach((item)=>{
+            if(Array.isArray(item)){
+                result.push(flatten(item))
+            }else{
+                result.push(item)
+            }
+        })
+        return result
+    }
+    //原地
+    function flat(arr){
+        while(arr.some(item => Array.isArray(item))){
+            arr = [].concat(...arr)
+        }
+        return arr
+    }
+
+    let testArr = [1, [2, [3, 4,[5,6,[7,8]]]]]
+    console.log(testArr.flat(2));
+    console.log(flat(testArr));
+    console.log((testArr.join(',').split(',')))
+
+
+</script>
+</html>

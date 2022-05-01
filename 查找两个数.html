@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    let arr = [6,7,1,2,3,4,5]
+
+    function findNumCP(arr,ans){
+        let results = []
+        arr.forEach((item,index,arr) =>{
+            let temp = ans - item
+            let tempIndex = arr.indexOf(temp)
+            if(tempIndex !== -1){
+                let obj = {
+                    index:[],
+                    value:[]
+                }
+                obj.index = [index,tempIndex]
+                obj.value = [item,temp]
+                results.push(obj)
+            }
+        })
+        return results
+    }
+
+    console.log(findNumCP(arr, 9));
+
+</script>
+</html>

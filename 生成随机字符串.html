@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    function randomStr(num){
+        let str = ''
+        for(let i = 0; i < num; i++){
+            str += String.fromCharCode(Math.random()*42+48)
+        }
+        return str
+    }
+
+    for(let i = 0; i < 5; i++){
+        console.log(randomStr(6));
+
+    }
+
+</script>
+</html>

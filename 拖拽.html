@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .move{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="move"></div>
+</body>
+<script>
+
+    let element = document.querySelector('.move')
+    let dragging = false
+    let trans,portrait //偏移量
+    document.addEventListener('mousedown',(e)=>{
+        if(e.target === element){
+            dragging = true
+            let eleRect = element.getBoundingClientRect()
+            console.log(e.clientX, e.clientY);
+            trans = e.clientX - eleRect.left
+            portrait = e.clientY - eleRect.top
+        }
+    })
+
+    document.addEventListener('mouseup', (e) => {
+        dragging = false
+    })
+    document.addEventListener('mousemove', (e) => {
+        if (dragging) {
+            let moveX = e.clientX - trans,
+                moveY = e.clientY - portrait
+            element.style.left = moveX + 'px'
+            element.style.top = moveY + 'px'
+        }
+    })
+
+    async function sleep(time){
+        // TODO
+        return new Promise(resolve => {
+            setTimeout(resolve, time)
+        })
+    }
+    async function main(){
+        await sleep(3000)
+        console.log('hello')
+    }
+    main()
+
+
+</script>
+</html>

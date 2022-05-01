@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    function deepClone(obj,hash = new WeakMap()){
+        if(typeof obj !== 'object'||obj === null) return obj
+        if(obj instanceof Date) return new Date(obj)
+        if(obj instanceof RegExp) return new RegExp(obj)
+
+        if(hash.has(obj)) return hash.get(obj)
+
+        let cloneObj = new obj.constructor()
+        hash.set(obj,cloneObj)
+
+        for(let key in obj){
+            if(obj.hasOwnProperty(key)){
+                cloneObj[key] = deepClone(obj[key],hash)
+            }
+        }
+        return cloneObj
+    }
+
+    // function deepClone(origin){
+    //     let originProto = Object.getPrototypeOf(origin);
+    //     return Object.assign(Object.create(originProto),origin)
+    // }
+    o = {a: 1, d: {c: '4'}};
+
+    res = deepClone(o);
+    res.d.c = 5
+    console.log(res);
+    console.log(o);
+    console.log(res === o);
+
+
+</script>
+</html>

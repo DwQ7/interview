@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function diff(obj1,obj2){
+        if(!obj1 instanceof Object || !obj2 instanceof Object){
+            return obj1 === obj2
+
+        }
+        if(Object.keys(obj1).length !== Object.keys(obj2).length){
+            return false
+        }
+
+        for(let key in obj1){
+            let isObj = obj1[key] instanceof Object && obj2[key] instanceof Object
+            if(isObj){
+                return diff(obj1[key],obj2[key])
+            }else if(obj1[key] !== obj2[key]){
+                return false
+            }
+        }
+        return true
+    }
+    let obj1 = {
+
+        name: "xiaoming",
+        sex : "male",
+        arr:[1,2,3],
+        age:{
+            1:129,
+            2:20
+        },
+    }
+
+    let obj2 = {
+        age:{
+            1:129,
+            2:20
+        },
+        name: "xiaoming",
+        sex : "male",
+        arr:[1,2,3]
+    }
+
+    console.log(diff(obj1, obj2));
+    console.log(obj1 === obj2);
+    console.log(JSON.stringify(obj1) === JSON.stringify(obj2));
+</script>
+</html>

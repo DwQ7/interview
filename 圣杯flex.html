@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            min-height: 500px;
+        }
+        #header{
+            text-align: center;
+            background-color: antiquewhite;
+        }
+        #container{
+            display: flex;
+        }
+        #center{
+            flex: 1;
+        }
+        #left{
+            width: 200px;
+            background-color: yellow;
+        }
+        #right{
+            width: 200px;
+            background-color: yellow;
+        }
+        #footer{
+            text-align: center;
+            background-color: aquamarine;
+        }
+
+    </style>
+</head>
+<body>
+<div id="header">this is header</div>
+<div id="container">
+    <div id="left" class="column"></div>
+    <div id="center" class="column">this is center</div>
+    <div id="right" class="column">this is right</div>
+</div>
+<div id="footer">this is footer</div>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    let testHeader = `Accept-Ranges: bytes
+                      Cache-Control: max-age=6000, public
+                      Connection: keep-alive
+                      Content-Type: application/javascript`
+
+    function headerTrans(header){
+        let result = {}
+        let temp = header.split('\n')
+        temp.forEach((item) =>{
+            let key = item.split(': ')[0].replace(/^\s+|\s+$/gm,'')
+            result[key] = item.split(':')[1].replace(/^\s+|\s+$/gm,'')
+        })
+        return result
+    }
+
+    console.log(headerTrans(testHeader));
+</script>
+</html>

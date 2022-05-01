@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+
+
+    (function (){
+        let see = [1,2,'3','4',[5,6,7,[8]],[9]]
+        let result = see.join(',').split(',').map(item => Number(item))
+        console.log(...result);
+    }())
+
+    let strs = ["flower","flow","flight"]
+
+    let a = Array.from(strs[0])
+
+    console.log(a);
+
+    console.log(a.includes('aa'));
+
+    let isValid = function(s) {
+        let str = s.split('')
+        let stack = []
+        str.forEach((item) =>{
+            if(item ==='('||item ==='{'||item==='['){
+                stack.push(item)
+            }else{
+                let temp = stack.pop()
+                if((temp ==='('&&item ===')')||(temp ==='{'&&item ==='}')||(temp ==='['&&item ===']')){
+
+                }else{
+                    return false
+                }
+            }
+        })
+        if(stack.length === 0)
+            return true
+        else
+            return false
+    };
+
+    isValid('(]')
+</script>
+</html>

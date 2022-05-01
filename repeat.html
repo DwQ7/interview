@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 使用 JS 实现一个 repeat 方法
+    function repeat (func, times, wait) {
+        // Todo
+        for(let i = 0; i < times; i++){
+            setTimeout(()=>{
+                console.log(func[i]);
+            },wait*i)
+        }
+    }
+
+    repeat([1,2,3,4],4,2000)
+    // const repeatFunc = repeat(alert, 4, 3000);
+    // 调用这个 repeatedFunc("hellworld")，会alert 4 次 helloworld, 每次间隔 3 秒
+
+
+</script>
+</html>

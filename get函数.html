@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    const obj = { selector: { to: { toutiao: "FE Coder"} }, target: [1, 2, { name: 'byted'}]};
+
+    function get(obj,...path){
+        let result = []
+        path.forEach((item)=>{
+            let temp = item.replace(/\[/g,'.').replace(/\]/g,'').split('.')
+            let value = obj
+            temp.forEach((item)=>{
+                value = value[item]
+            })
+            result.push(value)
+        })
+        return result
+    }
+
+    console.log(get(obj, 'selector.to.toutiao', 'target[0]', 'target[2].name'));
+</script>
+</html>

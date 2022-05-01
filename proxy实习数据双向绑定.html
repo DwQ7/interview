@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <input type="text" id="el"/>
+    <h2 id="h2"></h2>
+</div>
+
+</body>
+<script>
+
+    let el = document.getElementById('el')
+    let h2 = document.getElementById('h2')
+
+
+
+    let obj ={
+        name:'qx',
+        age:19
+    }
+
+    const handler = {
+        get:(target,key) =>{
+            return target[key]
+        },
+        set:(target,key,value) =>{
+            if(key === 'name'&&value){
+                h2.innerText = value
+                return target[key] = value
+            }
+        }
+    }
+    let proxy = new Proxy(obj,handler)
+
+
+
+
+    function shuru(e){
+        console.log(e.target);
+        proxy.name = e.target.value
+    }
+
+
+    function debounce(fn,timer){
+        let task = null
+        return function (){
+            if(task) clearTimeout(task)
+            let click = !task
+            if(click) {fn.apply(this,arguments)}
+            task = setTimeout(() =>{
+                task = null
+            },timer)
+        }
+    }
+    el.addEventListener('keyup',debounce(shuru,500))
+</script>
+</html>

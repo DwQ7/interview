@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #bg{
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index:1001;
+            opacity:.30;
+        }
+
+        #show{
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 32%;
+            width: 33%;
+            height: auto;
+            padding: 8px;
+            border: 8px solid #E8E9F7;
+            background-color: white;
+            z-index:1002;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container_div">
+    <div id="bg"></div>
+    <div id="show">
+        <div class="btn_div">
+            <div>
+                前往网站？
+            </div>
+            <input type="submit" class="submit" value="确定" onclick="toUrl()" />
+        </div>
+    </div>
+</div>
+    <div>
+        <a href="https://coding.imooc.com/class/chapter/225.html#Anchor" id="url">1213233</a>
+    </div>
+</body>
+<script>
+
+    let url = document.getElementById('url')
+    let bg = document.getElementById("bg")
+    let show = document.getElementById("show")
+    let nowUrl = undefined
+    onUrlClick = function (e) {
+
+        console.log(e.target.href)
+        nowUrl = e.target.href
+        e.preventDefault()
+        bg.style.display ="block"
+        show.style.display ="block"
+    }
+    bg.onclick = () =>{
+        bg.style.display ="none"
+        show.style.display ="none"
+    }
+    toUrl = function (){
+        window.location.href = nowUrl
+    }
+    url.addEventListener('click',onUrlClick)
+
+
+
+</script>
+</html>

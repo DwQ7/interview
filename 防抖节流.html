@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    防抖
+    <input type="text" id="test1"/>
+    节流
+    <input type="text" id="test2">
+</div>
+
+</body>
+<script>
+
+    function debounce(fn,timer,isNow){
+        let task = null
+        return function (){
+            if(task) clearTimeout(task)
+            if(isNow){
+                let firstClick = !task
+                if(firstClick){fn.apply(this,arguments)}
+                task = setTimeout(()=>{
+                    task  =null
+                },timer)
+            }else{
+                task = setTimeout(()=>{
+                    fn.apply(this.arguments)
+                },timer)
+            }
+        }
+    }
+    function throttle(fn,timer){
+        let task = null
+        return function (){
+            if(task) return
+            task = setTimeout(()=>{
+                fn.apply(this,arguments)
+                task = null
+            },timer)
+        }
+    }
+
+
+    let input1 = document.getElementById('test1')
+    let input2 = document.getElementById('test2')
+    input1.addEventListener('keyup', 防抖节流(() => {
+        console.log(input1.value);
+    },1000,true))
+
+    input2.addEventListener('keyup', throttle(() => {
+        console.log(input2.value);
+    },1000))
+
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            background-color: aquamarine;
+            overflow: hidden;
+        }
+        div::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        ul{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+</body>
+</html>

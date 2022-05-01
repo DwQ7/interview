@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    const parseParam = (url) => {
+
+    }
+    function getQueryObj(url) {
+        let temp = url.split('?')[1].split('#')[0].split('&')
+        let result = {}
+        temp.forEach((item)=>{
+            let key
+            let value
+            [key,value] = item.split('=')
+            result[key] =  decodeURI(value)
+        })
+        return result
+    }
+
+    let testUrl1 = 'https://www.domain.com/?user=anonymous&id=123&id=456&city=%E5%8C%97%E4%BA%AC&enabled'
+    let testUrl = "https://sample.com/?a=1&e&b=2&c=xx&d#hash"
+    console.log(getQueryObj(testUrl1));
+</script>
+</html>

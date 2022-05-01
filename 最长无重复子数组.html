@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arr = [2,5,3,4]
+    function maxLength( arr ) {
+        // write code here
+        let result = []
+        let max = 0
+        arr.forEach((item)=>{
+            let index = result.findIndex((item1 => item1 === item))
+            if(index !== -1){
+                result.splice(0,index+1)
+            }
+            result.push(item)
+            max = Math.max(result.length,max)
+        })
+        return max
+    }
+
+    let aa = Array.from(arr)
+    console.log(aa);
+    console.log(arr.findIndex((item, index) => item === 2));
+    console.log(maxLength(arr));
+
+
+</script>
+</html>

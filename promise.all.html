@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    function promiseAll(promises){
+        return new Promise((resolve,reject)=>{
+            if(!Array.isArray(promises)){
+                return reject(new TypeError('No Array'))
+            }
+            let count = 0
+            let len = promises.length
+            let result = []
+            for(let i = 0; i < len; i++){
+                promises[i].then(res =>{
+                    count++
+                    result.push(res)
+                    if(count === len){}
+                    resolve(result)
+                }).catch((err) =>{
+                    reject(err)
+                })
+            }
+        })
+    }
+
+    let promiseArr = []
+    for(let i = 0; i < 3; i++){
+        promiseArr.push(new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve(i)
+            },i*1000)
+        }))
+    }
+
+    promiseAll(promiseArr).then((res)=>{
+        console.log(res);
+    })
+</script>
+</html>

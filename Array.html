@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="http://localhost:5772/public/images/dog.jpg" alt="">
+</body>
+<script>
+
+    let arr1 = [3,1,7,9]
+
+    console.log(arr1.map((item) => item > 5));
+
+    console.log(arr1.filter((item) => item > 5
+    ));
+
+    console.log(arr1.find((item) => item > 5));
+
+    let status = '000000000000'
+    function updateStatus(status,start,last){
+        let newSta  =  status.split('').map((item, index) => {
+            if(index >= start -1 && index < start+last-1){
+                return '1'
+            }else{
+                return item
+            }
+        }).join('')
+        return newSta
+    }
+
+    console.log(updateStatus(status,10,3));
+</script>
+</html>

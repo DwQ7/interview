@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    //不能用箭头函数
+    Function.prototype.Bind = function (context,...args){
+        context = context || window
+        let fn =Symbol()
+        context[fn] = this
+        return function (...newArgs){
+            let res = context[fn](...args,...newArgs)
+            delete context[fn]
+            return res
+        }
+    }
+
+    function fn1(a, b, c){
+        console.log('this', this)
+        console.log(a, b, c)
+        return 'this is fn1'
+    }
+    const testFn = fn1.Bind({name:'qx'},10,20)
+
+    console.log(testFn(30));
+
+
+</script>
+</html>

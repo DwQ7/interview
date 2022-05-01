@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+  function Node(element){
+    this.element = element
+    this.next = null
+  }
+
+  function nodeList() {
+      this.head = new Node('head')
+      this.find = find;                   //查找节点
+      this.insert = insert;               //插入节点
+      this.remove = remove;               //删除节点
+      this.findPrev = findPrev;           //查找前一个节点
+      this.display = display;             //显示链表
+  }
+
+  function find(item){
+      let curNode = this.head
+      while( curNode.element !== item){
+          curNode = curNode.next
+      }
+      return curNode
+  }
+
+  function findPrev(item){
+      let curNode = this.head
+      while(!( curNode.next == null) && ( curNode.next.element !== item )){
+          curNode = curNode.next
+      }
+      return curNode
+  }
+
+
+  function insert(item,newElement){
+      let newNode = new Node( newElement)
+      newNode.next = find(item).next
+      find(item).next = newNode
+  }
+
+  function remove(item){
+      let preNode = this.findPrev(item)
+      if(!(preNode.next !== null)){
+          preNode.next = preNode.next.next
+      }
+  }
+
+
+
+
+</script>
+</html>

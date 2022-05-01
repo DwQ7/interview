@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    function myNew(fn,...args){
+        let obj = Object.create(fn.prototype)
+        let res = fn.call(obj,...args)
+        if(res&&(typeof res === 'function'||typeof  res === 'object')){
+            return res
+        }
+        return obj
+    }
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    Person.prototype.say = function() {
+        console.log(this.age);
+    }
+    function a () {
+        function b() {
+            console.log(1);
+        }
+        return b;
+    }
+    const c = myNew(a)//function b 而不是 a {}
+    console.log(c);
+    let p1 = myNew(Person, "qx", 18);
+    console.log(p1);
+    p1.say()
+</script>
+</html>

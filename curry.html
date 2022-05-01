@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    const curry = (fn,...args) =>{
+        if(args.length >= fn.length)
+            return fn(...args)
+        else{
+            return (...newArgs) => curry(fn,...args,...newArgs)
+        }
+    }
+
+    function add(a,b,c,d){
+        return a+b+c+d
+    }
+
+    const curryAdd = curry(add)
+
+    console.log(curryAdd(1, 2, 3, 4))
+    console.log(curryAdd(1)(2)(3, 4))
+</script>
+</html>

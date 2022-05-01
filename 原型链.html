@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    function person(name){
+        this.name = name
+    }
+
+    let qx =  new person('qx')
+    console.log(person.__proto__.__proto__.__proto__)
+    console.log(qx.__proto__.__proto__.__proto__)
+    //
+    // console.log(person.prototype.__proto__)
+    // console.log(qx.__proto__.__proto__)
+
+
+
+    let foo ={}
+</script>
+
+</html>

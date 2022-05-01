@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <h1>123</h1>
+        <h1></h1>
+        <h1></h1>
+        <h1></h1>
+        <h1></h1>
+    </div>
+
+    <div>
+
+    </div>
+</body>
+<script>
+    console.log(document.getElementsByTagName('*'));
+    let tags = document.getElementsByTagName('*')
+    let tagsArr = []
+    for (let i = 0; i < tags.length; i++) {
+        tagsArr.push((tags[i].tagName).toLowerCase());
+    }
+    console.log(...new Set(tagsArr));
+    function Foo () {
+        getName = function () {
+            console.log(1)
+        }
+        console.log('this is' + this)
+        return this
+    }
+
+    Foo.getName = function () {
+        console.log(2)
+    }
+    Foo.prototype.getName = function () {
+        console.log(3)
+    }
+    var getName = function () {
+        console.log(4)
+    }
+    function getName () {
+        console.log(5)
+    }
+    // 请写出一下的输出结果
+    // Foo.getName()  //2
+    // getName() // 4
+    // Foo().getName() //this is window 1
+    // getName()  // 1
+    // new Foo.getName() //2
+    // new Foo().getName() // this is window 3
+    new new Foo().getName()
+
+
+    window.name = 'ByteDance';
+    function A () {
+        this.name = 123;
+    }
+    A.prototype.getA = function(){
+        console.log(this);
+        return this.name + 1;
+    }
+    let a = new A();
+    let funcA = a.getA;
+    console.log(funcA());
+
+
+</script>
+</html>

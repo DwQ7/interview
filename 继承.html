@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function Err(age){
+        this.age = age
+        this.name = 'qqq'
+        this.test ='test'
+        this.say = function (){
+            console.log('hi');
+        }
+    }
+
+    Err.prototype.hi = function (){
+
+        console.log('hello');
+
+    }
+
+    function child(age){
+        Err.call(this,age)
+        this.name='child'
+    }
+
+    function extend(child,parent){
+        console.log(Object.create(parent.prototype).__proto__);
+        child.prototype = Object.create(parent.prototype)
+        child.prototype.constructor = child
+    }
+    extend(child,Err)
+
+
+    let bb = new child(11)
+    console.log(bb);
+    console.log(bb.test);
+    bb.hi()
+</script>
+</html>

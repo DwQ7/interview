@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    const hero = {
+        name: 'Batman',
+        city: 'Gotham',
+        value:{
+          a:1,
+          b:2
+        }
+    }
+    let cloneTest = Object.assign({},hero)
+    console.log(cloneTest);
+    let {...heroClone} = hero
+    heroClone.value.a ='qx'
+    console.log(hero);
+    console.log(heroClone);
+</script>
+</html>

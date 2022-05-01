@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    function ajax_post(url,data){
+        let xhr = new XMLHttpRequest()
+
+        xhr.open('post',url)
+
+        xhr.setRequestHeader("Content-type","text/plain")
+
+        if(data){
+            xhr.send(data)
+        }else{
+            xhr.send()
+        }
+
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState === 4 && xhr.status ===200){
+                console.log(xhr.responseText);
+            }
+        }
+
+    }
+
+
+</script>
+</html>
